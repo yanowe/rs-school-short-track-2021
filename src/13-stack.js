@@ -10,17 +10,27 @@
  * stack.pop(); // undefined
  *
  */
+
+const ListNode = require('../extensions/list-node');
+
 class Stack {
-  push(/* element */) {
-    throw new Error('Not implemented');
+  push(element) {
+    const item = new ListNode(element);
+    if (this.head) {
+      item.next = this.head;
+      this.head = item;
+    } else this.head = item;
   }
 
   pop() {
-    throw new Error('Not implemented');
+    const popItem = this.head;
+    this.head = this.head.next;
+    return popItem.value;
   }
 
   peek() {
-    throw new Error('Not implemented');
+    const peekItem = this.head;
+    return peekItem.value;
   }
 }
 
